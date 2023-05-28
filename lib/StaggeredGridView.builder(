@@ -1,0 +1,105 @@
+                StaggeredGridView.builder(
+                //   itemBuilder: (context, index) => Container(
+                //       child: Column(
+                //         children: [
+                //           Expanded(
+                //             flex: 8,
+                //             child: Container(
+                //               child: Image.asset(
+                //                 "${items[index].img}",
+                //                 fit: BoxFit.cover,
+                //               ),
+                //             ),
+                //           ),
+                //           Expanded(
+                //             flex: 2,
+                //             child: Row(
+                //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //               crossAxisAlignment: CrossAxisAlignment.center,
+                //               children: [
+                //                 Text(
+                //                   "\$ ${items[index].price}",
+                //                   style: TextStyle(
+                //                       fontSize: 16,
+                //                       fontWeight: FontWeight.bold),
+                //                 ),
+                //                 Text(
+                //                   " ${items[index].name}",
+                //                   style: TextStyle(
+                //                       fontSize: 16,
+                //                       fontWeight: FontWeight.bold),
+                //                 ),
+                //               ],
+                //             ),
+                //           ),
+                //         ],
+                //       ),
+                //     ),
+                //   crossAxisCount: 2,
+                //   staggeredTileBuilder: (int index) {
+                //     return new StaggeredTile.count(3, index.isEven ? 2 : 1);
+                //   },
+                // ),
+
+
+
+
+                GridView.builder(
+                  itemCount: items.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (
+                                (context) => ItemDetailPage(
+                                  wear: items[index],
+                                )
+                              ),
+                            ),
+                        );
+                      },
+                      child: Column(
+                        children: [
+                          Expanded(
+                            flex: 8,
+                            child: Container(
+                              child: Image.asset(
+                                "${items[index].img}",
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            flex: 2,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "\$ ${items[index].price}",
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Text(
+                                  " ${items[index].name}",
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    childAspectRatio: 0.5,
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 16,
+                    mainAxisSpacing: 16,
+                  ),
+                ),
